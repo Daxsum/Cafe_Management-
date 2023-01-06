@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const { TypeSchema } = require("./types");
 const ProductSchema = new mongoose.Schema({
+  filePath: { type: String, required: true },
   name: { type: String, required: true },
   type: { type: TypeSchema, required: true },
   numberInStock: { type: Number, required: true },

@@ -5,6 +5,7 @@ const login = require("./routes/auth");
 const products = require("./routes/products");
 const types = require("./routes/types");
 const order = require("./routes/ordered");
+const path = require("path");
 /////connecting to database
 mongoose
   .connect(
@@ -18,6 +19,10 @@ mongoose
   });
 const app = express();
 app.use(express.json());
+
+// app.use(express.static("public"));
+app.use("/files/images", express.static("files/images"));
+// app.use("/files/images", express.static("images"));
 /////routes
 app.use("/api/users", users);
 app.use("/api/login", login);

@@ -7,6 +7,8 @@ const Ordered = mongoose.model(
     item: { type: ProductSchema, required: true },
     quantity: { type: Number, required: true },
     date: { type: Date, required: true, default: Date.now },
+    isActive: { type: Boolean, required: true, default: true },
+    Time: { type: Number, required: true, default: 10 },
     who: {
       type: new mongoose.Schema({
         firstName: {

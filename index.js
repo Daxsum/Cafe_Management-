@@ -4,6 +4,7 @@ const users = require("./routes/users");
 const login = require("./routes/auth");
 const products = require("./routes/products");
 const types = require("./routes/types");
+const order = require("./routes/ordered");
 /////connecting to database
 mongoose
   .connect(
@@ -22,6 +23,7 @@ app.use("/api/users", users);
 app.use("/api/login", login);
 app.use("/api/types", types);
 app.use("/api/products", products);
+app.use("/api/order", order);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

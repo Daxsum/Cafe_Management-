@@ -43,6 +43,7 @@ router.post("/Add", [auth, table], async (req, res) => {
 
   const order = new Ordered({
     item: {
+      _id: product._id,
       filePath: product.filePath,
       name: product.name,
       type: {

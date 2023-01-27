@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Joi = require("joi");
 const typeSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  id: { type: String },
 });
 const Type = mongoose.model("Types", typeSchema);
 function validate(type) {

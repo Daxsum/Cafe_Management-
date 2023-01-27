@@ -6,6 +6,7 @@ const products = require("./routes/products");
 const types = require("./routes/types");
 const order = require("./routes/ordered");
 const path = require("path");
+let cors = require("cors");
 /////connecting to database
 mongoose
   .connect(
@@ -18,6 +19,7 @@ mongoose
     console.log(":-( couldn't connect to mongoDb because of: ", err);
   });
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // app.use(express.static("public"));

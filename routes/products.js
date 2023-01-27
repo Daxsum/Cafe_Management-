@@ -53,7 +53,7 @@ router.post(
       name: req.body.name,
       type: {
         name: type.name,
-        id: type.id,
+        id: type._id,
       },
       numberInStock: parseInt(req.body.numberInStock),
       price: parseInt(req.body.price),

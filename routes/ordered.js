@@ -11,9 +11,14 @@ router.get("/getAll", auth, async (req, res) => {
   const orderedLiist = await Ordered.find().sort("date");
   res.send(orderedLiist);
 });
-router.get("/getAllActive", auth, async (req, res) => {
-  const orderedLiist = await Ordered.find({ isActive: true }).sort("date");
-  res.send(orderedLiist);
+router.get("/getAllActive", auth, async (req, res,next) => {
+  try {
+    const orderedLiist = await Ordered.find({ isActive: true }).sort("date");
+    res.send(orderedLiist);
+    
+  } catch (error) {
+    next(error)
+  }
 });
 /// get specfic genre api end-point
 router.get("/:id", async (req, res) => {
@@ -59,6 +64,7 @@ router.post("/Add", [auth, table], async (req, res) => {
     },
     quantity: req.body.quantity,
     who: {
+      _id:user._id,
       firstName: user.firstName,
       lastName: user.lastName,
       userName: user.userName,
@@ -70,9 +76,9 @@ router.post("/Add", [auth, table], async (req, res) => {
   await order.save();
   product.numberInStock = product.numberInStock - req.body.quantity;
   await product.save();
-  console.log("Alldone ");
   //send the genre back
   res.send(order);
+  console.log("Alldone :",order);
 });
 // updating specfic genre
 router.put("/Update/:id", auth, async (req, res) => {

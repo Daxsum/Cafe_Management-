@@ -12,6 +12,9 @@ const Ordered = mongoose.model(
     Time: { type: Number, required: true, default: 10 },
     who: {
       type: new mongoose.Schema({
+        _id:{
+          type:String,
+        },
         firstName: {
           type: String,
           required: true,

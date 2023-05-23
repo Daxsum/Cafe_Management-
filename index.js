@@ -1,7 +1,9 @@
+require("express-async-errors");////this package replace async module in medilware directory i use it for simplisity or you can you asyc module and wrap all the routes with async module exported function to make sure logging error working
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/users");
 const login = require("./routes/auth");
+const error= require("./middleware/error")
 const products = require("./routes/products");
 const types = require("./routes/types");
 const order = require("./routes/ordered");
@@ -31,6 +33,7 @@ app.use("/api/login", login);
 app.use("/api/types", types);
 app.use("/api/products", products);
 app.use("/api/order", order);
+app.use(error);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

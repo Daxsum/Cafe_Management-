@@ -20,9 +20,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 //////////////////////////
 
-router.get("/getAll", async (req, res) => {
-  const productList = await Products.find().sort("name");
-  res.send(productList);
+router.get("/getAll", async (req, res,next) => {
+  try {
+    const productList = await Products.find().sort("name");
+    res.send(productList);
+    
+  } catch (error) {
+    next(error)
+  }
 });
 /// get specfic genre api end-point
 router.get("/:id", async (req, res) => {

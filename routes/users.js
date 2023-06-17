@@ -6,7 +6,11 @@ const { validate, Users } = require("../models/users");
 const router = express.Router();
 const auth = require("../middleware/auth");
 
-router.get("/getAll", [auth, admin], async (req, res) => {
+router.get("/getAllUsers", [auth], async (req, res) => {
+  const usersList = await Users.find({role:"table"});
+  res.send(usersList);
+});
+router.get("/getAll", [auth], async (req, res) => {
   const usersList = await Users.find();
   res.send(usersList);
 });

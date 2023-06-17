@@ -11,6 +11,7 @@ router.get("/getAll", auth, async (req, res) => {
   const orderedLiist = await Ordered.find().sort("date");
   res.send(orderedLiist);
 });
+
 router.get("/getAllActive", auth, async (req, res,next) => {
   try {
     const orderedLiist = await Ordered.find({ isActive: true }).sort("date");

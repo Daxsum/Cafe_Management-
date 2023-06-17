@@ -1,4 +1,4 @@
-require("express-async-errors");////this package replace async module in medilware directory i use it for simplisity or you can you asyc module and wrap all the routes with async module exported function to make sure logging error working
+require("express-async-errors"); ////this package replace async module in medilware directory i use it for simplisity or you can you asyc module and wrap all the routes with async module exported function to make sure logging error working
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/users");
